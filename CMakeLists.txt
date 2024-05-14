@@ -51,7 +51,7 @@ target_link_libraries(${NomProjet} PRIVATE Qt6::OpenGLWidgets)
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.VR-Tuto0)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER fr.unica.VR-Tuto0)
 endif()
 set_target_properties(${NomProjet} PROPERTIES
     ${BUNDLE_ID_OPTION}
