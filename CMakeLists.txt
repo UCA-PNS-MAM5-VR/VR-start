@@ -22,7 +22,7 @@ set(PROJECT_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(VR-Tuto0
+    qt_add_executable(${NomProjet}
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
@@ -32,20 +32,20 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(VR-Tuto0 SHARED
+        add_library(${NomProjet} SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(VR-Tuto0
+        add_executable(${NomProjet}
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(VR-Tuto0 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(VR-Tuto0 PRIVATE Qt6::OpenGLWidgets)
+target_link_libraries(${NomProjet} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(${NomProjet} PRIVATE Qt6::OpenGLWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -53,7 +53,7 @@ target_link_libraries(VR-Tuto0 PRIVATE Qt6::OpenGLWidgets)
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.VR-Tuto0)
 endif()
-set_target_properties(VR-Tuto0 PROPERTIES
+set_target_properties(${NomProjet} PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -62,12 +62,12 @@ set_target_properties(VR-Tuto0 PROPERTIES
 )
 
 include(GNUInstallDirs)
-install(TARGETS VR-Tuto0
+install(TARGETS ${NomProjet}
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(VR-Tuto0)
+    qt_finalize_executable(${NomProjet})
 endif()
