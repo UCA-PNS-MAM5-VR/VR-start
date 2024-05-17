@@ -1,7 +1,6 @@
 #ifndef VRWIDGET_H
 #define VRWIDGET_H
 
-//#include <QtGui>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_3_Core>
 #include <QMatrix4x4>
